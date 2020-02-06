@@ -39,7 +39,7 @@ fade_t *init_fade(sfVector2f size, sfColor color, float speed, int in)
 
 void reset_fade(fade_t *fade)
 {
-    fade->shape = sfRectangleShape_create();
+    init_shape(fade);
     fade->is_finish = 0;
     fade->is_active = 0;
 }

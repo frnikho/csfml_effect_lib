@@ -8,7 +8,18 @@
 #include <SFML/Graphics.h>
 #include "fade.h"
 
-static void update_fade(fade_t *fade)
+static void update_fade_out(fade_t *fade)
+{
+    if (fade->color.a - fade->speed <= 0) {
+        fade->color.a = 255;
+        fade->is_finish = 1;
+        fade->is_active = 0;
+    } else {
+        fade->color.a -= fade->speed;
+    }
+}
+
+static void update_fade_in(fade_t *fade)
 {
     if (fade->color.a >= 254 - fade->speed) {
         fade->color.a = 0;
@@ -16,6 +27,15 @@ static void update_fade(fade_t *fade)
         fade->is_active = 0;
     } else {
         fade->color.a += fade->speed;
+    }
+}
+
+static void update_fade(fade_t *fade)
+{
+    if (fade->fade_in) {
+        update_fade_in(fade);
+    } else {
+        update_fade_out(fade);
     }
     sfRectangleShape_setFillColor(fade->shape, fade->color);
 }

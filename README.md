@@ -8,7 +8,14 @@
 
 ### Features
 
-## demo
+* fade in 
+
+### todo
+
+* fade out
+* moving text
+
+### demo
 
 `make demo`
 

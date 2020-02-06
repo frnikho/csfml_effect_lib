@@ -7,7 +7,12 @@
 
 #include "fade.h"
 
-void set_fade_active(fade_t *fade)
+int fade_is_active(fade_t *fade)
 {
+    return fade->is_active;
+}
 
+int fade_is_finish(fade_t *fade)
+{
+    return fade->is_finish;
 }

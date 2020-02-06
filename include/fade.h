@@ -10,7 +10,7 @@
 
 #include <SFML/Graphics.h>
 
-enum FADE_TYPE {FADE_IN = 1, FADE_OUT = 0};
+enum FADE_TYPE {FADE_IN = 0, FADE_OUT = 1};
 
 typedef struct fade_s {
     sfVector2f screen_size;
@@ -27,5 +27,7 @@ fade_t *init_fade(sfVector2f size, sfColor color, float speed, int in);
 void draw_fade(sfRenderWindow *window, fade_t *fade);
 void dispose_fade(fade_t *fade);
 void reset_fade(fade_t *fade);
+int fade_is_active(fade_t *fade);
+int fade_is_finish(fade_t *fade);
 
 #endif
